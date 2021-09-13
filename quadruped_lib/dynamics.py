@@ -1,6 +1,6 @@
 import numpy as np
 from quadruped_lib import kinematics_config
-import math
+
 
 def leg_jacobian(
     joint_angles: np.ndarray,
@@ -16,22 +16,22 @@ def leg_jacobian(
     l2 = kinematics_config.lower_link_length
     (alpha, theta, phi) = joint_angles
 
-    px = -l1 * math.sin(theta) - l2 * math.sin(theta + phi)
+    px = -l1 * np.sin(theta) - l2 * np.sin(theta + phi)
     py = kinematics_config.abduction_offset_i(leg_index)
-    pz = -l1 * math.cos(theta) - l2 * math.cos(theta + phi)
+    pz = -l1 * np.cos(theta) - l2 * np.cos(theta + phi)
 
     return np.array(
         [
-            [0, pz, -l2 * math.cos(theta + phi)],
+            [0, pz, -l2 * np.cos(theta + phi)],
             [
-                -py * math.sin(alpha) - pz * math.cos(alpha),
-                math.sin(alpha) * px,
-                -l2 * math.sin(alpha) * math.sin(theta + phi),
+                -py * np.sin(alpha) - pz * np.cos(alpha),
+                np.sin(alpha) * px,
+                -l2 * np.sin(alpha) * np.sin(theta + phi),
             ],
             [
-                py * math.cos(alpha) - pz * math.sin(alpha),
-                -px * math.cos(alpha),
-                l2 * math.cos(alpha) * math.sin(theta + phi),
+                py * np.cos(alpha) - pz * np.sin(alpha),
+                -px * np.cos(alpha),
+                l2 * np.cos(alpha) * np.sin(theta + phi),
             ],
         ]
     )

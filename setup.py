@@ -10,13 +10,12 @@ setuptools.setup(
     install_requires=[
         "numpy",
         "pyyaml",
-        "transforms3d",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    test_suite='nose.collector',
-    tests_require=['nose'],
+    test_suite="nose.collector",
+    tests_require=["nose"],
 )

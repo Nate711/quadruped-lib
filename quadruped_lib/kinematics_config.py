@@ -54,9 +54,10 @@ class KinematicsConfig:
                 self.abduction_offset,
             ]
         )
+
     @functools.lru_cache(maxsize=128)
-    def abduction_offset_i(self, leg_index:int):
-        if(leg_index == 0 or leg_index == 2):
+    def abduction_offset_i(self, leg_index: int):
+        if leg_index == 0 or leg_index == 2:
             return -self.abduction_offset
         else:
             return self.abduction_offset
